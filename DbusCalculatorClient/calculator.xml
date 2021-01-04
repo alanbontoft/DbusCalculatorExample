@@ -1,0 +1,37 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="com.deathstar.Calculator">
+    <signal name="newProduct">
+      <arg name="product" type="d" direction="out"/>
+    </signal>
+    <signal name="newQuotient">
+      <arg name="quotient" type="d" direction="out"/>
+    </signal>
+    <signal name="newSum">
+      <arg name="result" type="d" direction="out"/>
+    </signal>
+    <signal name="newDifference">
+      <arg name="result" type="d" direction="out"/>
+    </signal>
+    <method name="multiply">
+      <arg type="d" direction="out"/>
+      <arg name="factor0" type="d" direction="in"/>
+      <arg name="factor2" type="d" direction="in"/>
+    </method>
+    <method name="divide">
+      <arg type="d" direction="out"/>
+      <arg name="divident" type="d" direction="in"/>
+      <arg name="divisor" type="d" direction="in"/>
+    </method>
+    <method name="add">
+      <arg type="d" direction="out"/>
+      <arg name="a" type="d" direction="in"/>
+      <arg name="b" type="d" direction="in"/>
+    </method>
+    <method name="subtract">
+      <arg type="d" direction="out"/>
+      <arg name="a" type="d" direction="in"/>
+      <arg name="b" type="d" direction="in"/>
+    </method>
+  </interface>
+</node>
