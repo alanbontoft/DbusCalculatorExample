@@ -2,10 +2,10 @@
 <node>
   <interface name="com.deathstar.Calculator">
     <signal name="newProduct">
-      <arg name="product" type="d" direction="out"/>
+      <arg name="result" type="d" direction="out"/>
     </signal>
     <signal name="newQuotient">
-      <arg name="quotient" type="d" direction="out"/>
+      <arg name="result" type="d" direction="out"/>
     </signal>
     <signal name="newSum">
       <arg name="result" type="d" direction="out"/>
@@ -15,12 +15,12 @@
     </signal>
     <method name="multiply">
       <arg type="d" direction="out"/>
-      <arg name="factor0" type="d" direction="in"/>
+      <arg name="factor1" type="d" direction="in"/>
       <arg name="factor2" type="d" direction="in"/>
     </method>
     <method name="divide">
       <arg type="d" direction="out"/>
-      <arg name="divident" type="d" direction="in"/>
+      <arg name="dividend" type="d" direction="in"/>
       <arg name="divisor" type="d" direction="in"/>
     </method>
     <method name="add">

@@ -10,28 +10,29 @@ Calc::Calc(QObject *parent)
 
 Calc::~Calc() {}
 
-double Calc::multiply(double factor0, double factor1)
+double Calc::multiply(double factor1, double factor2)
 {
-    qDebug() << __PRETTY_FUNCTION__ << factor0 << factor1;
-    double product = factor0 * factor1;
-    emit newProduct(product);
-    return product;
+    qDebug() << __PRETTY_FUNCTION__ << factor1 << factor2;
+    double result = factor1 * factor2;
+    emit newProduct(result);
+    return result;
 }
 
 double Calc::divide(double dividend, double divisor)
 {
     qDebug() << __PRETTY_FUNCTION__ << dividend << divisor;
-    double quotient = dividend / divisor;
+
 
     if (divisor == 0.0)
     {
         sendErrorReply(QDBusError::NotSupported, QString("Division by zero not allowed"));
-        return 0;
+        return 0.0;
     }
     else
     {
-        emit newQuotient(quotient);
-        return quotient;
+        double result = dividend / divisor;
+        emit newQuotient(result);
+        return result;
     }
 }
 

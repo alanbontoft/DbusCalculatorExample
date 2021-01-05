@@ -16,14 +16,14 @@ public:
     virtual ~Calc();
 
 public slots:
-    double multiply(double factor0, double factor2);
-    double divide(double divident, double divisor);
+    double multiply(double factor1, double factor2);
+    double divide(double dividend, double divisor);
     double add(double a, double b);
     double subtract(double a, double b);
 
 signals:
-    void newProduct(double product);
-    void newQuotient(double quotient);
+    void newProduct(double result);
+    void newQuotient(double result);
     void newSum(double result);
     void newDifference(double result);
 };
