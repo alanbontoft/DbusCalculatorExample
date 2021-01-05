@@ -36,6 +36,8 @@ private slots:
 
     void showResult(QDBusReply<double> reply);
 
+    void newValue(double value);
+
 private:
     Ui::Dialog *ui;
     com::deathstar::Calculator *calc;

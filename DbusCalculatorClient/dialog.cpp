@@ -1,6 +1,8 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
+#include <QMessageBox>
+
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Dialog)
@@ -8,6 +10,11 @@ Dialog::Dialog(QWidget *parent)
     ui->setupUi(this);
     calc = new com::deathstar::Calculator("com.deathstar.CalcService", "/Calculator",
                            QDBusConnection::sessionBus(), this);
+
+    connect(calc, &com::deathstar::Calculator::newSum, this, &Dialog::newValue);
+    connect(calc, &com::deathstar::Calculator::newDifference, this, &Dialog::newValue);
+    connect(calc, &com::deathstar::Calculator::newProduct, this, &Dialog::newValue);
+    connect(calc, &com::deathstar::Calculator::newQuotient, this, &Dialog::newValue);
 }
 
 Dialog::~Dialog()
@@ -94,6 +101,15 @@ void Dialog::showResult(QDBusReply<double> reply)
     }
     else
     {
-        ui->lblResult->setText(reply.error().name());
+        QMessageBox mbox(this);
+
+        mbox.setWindowTitle(reply.error().name());
+        mbox.setText(reply.error().message());
+        mbox.exec();
     }
+}
+
+void Dialog::newValue(double value)
+{
+    qDebug() << value << endl;
 }

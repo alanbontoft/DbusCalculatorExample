@@ -2,9 +2,11 @@
 #define CALC_H
 
 #include <QObject>
+#include <QDBusContext>
+#include <QDBusError>
 
 
-class Calc : public QObject
+class Calc : public QObject, protected QDBusContext
 {
     Q_OBJECT;
     Q_CLASSINFO("D-Bus Interface", "com.deathstar.Calculator");

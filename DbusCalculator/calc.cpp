@@ -22,8 +22,17 @@ double Calc::divide(double dividend, double divisor)
 {
     qDebug() << __PRETTY_FUNCTION__ << dividend << divisor;
     double quotient = dividend / divisor;
-    emit newQuotient(quotient);
-    return quotient;
+
+    if (divisor == 0.0)
+    {
+        sendErrorReply(QDBusError::NotSupported, QString("Division by zero not allowed"));
+        return 0;
+    }
+    else
+    {
+        emit newQuotient(quotient);
+        return quotient;
+    }
 }
 
 double Calc::add(double a, double b)
